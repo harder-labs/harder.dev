@@ -1,9 +1,5 @@
 ---
-type Props = {
-  tone?: "info" | "warning" | "success";
-  title?: string;
-};
-
+type Props = { tone?: "info" | "warning" | "success"; title?: string };
 const { tone = "info", title } = Astro.props as Props;
 ---
 
@@ -13,28 +9,31 @@ const { tone = "info", title } = Astro.props as Props;
     <slot />
   </div>
 </aside>
-
 <style>
   .callout {
-    border-radius: 14px;
-    border: 1px solid var(--border);
-    padding: 1rem;
-    background: rgba(7, 12, 30, 0.74);
+    border-left: 2px solid var(--accent-secondary);
+    padding: 1rem 1.3rem;
+    background: var(--surface-1);
     display: grid;
     gap: 0.5rem;
   }
-
   .callout h3 {
-    font-size: 0.9rem;
+    font:
+      500 0.76rem var(--font-ibm-plex-mono),
+      monospace;
     text-transform: uppercase;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.1em;
     color: var(--accent-secondary);
   }
-
+  .callout.warning {
+    border-color: var(--accent-tertiary);
+  }
   .callout.warning h3 {
     color: var(--accent-tertiary);
   }
-
+  .callout.success {
+    border-color: var(--accent-primary);
+  }
   .callout.success h3 {
     color: var(--accent-primary);
   }

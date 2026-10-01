@@ -1,53 +1,168 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
-import NeonCard from "@/components/NeonCard.astro";
 import { getCollection } from "astro:content";
-
 const projects = (await getCollection("projects")).sort((a, b) => a.data.order - b.data.order);
+const visuals: Record<string, string> = {
+  "hill-country-gear": "/img/hcg.jpg",
+  "austin-puzzle-exchange": "/img/austin_puzzles.jpg",
+  "stellar-arcade": "/img/stellar-arcade1.jpg"
+};
 ---
 
-<BaseLayout title="Projects | Harder Labs" description="Brands and ventures operated by Harder Labs.">
+<BaseLayout
+  title="Projects & Ventures | Harder Labs"
+  description="Explore the e-commerce brands, community platforms, and software ventures built and operated by Harder Labs."
+>
   <section class="page-hero">
     <div class="container">
-      <p class="muted">/projects</p>
-      <h1 class="hero-title">Our Ventures</h1>
+      <p class="muted">01 / Our work</p>
+      <h1 class="hero-title">Things we've put into the world.</h1>
       <p class="hero-subtitle">
-        Brands, platforms, and experiments actively built and operated by Harder Labs.
-        Each one is a real business helping real customers enjoy their lives.
+        Explore the brands and community platforms we build and operate. Each venture starts with a
+        specific need and grows through real-world feedback.
       </p>
     </div>
   </section>
-
   <section class="section">
-    <div class="container grid grid-2">
-      {
-        projects.map((project) => (
-          <NeonCard>
-            <h2 style="font-size:1.2rem;">
-              <a class="project-title-link" href={project.data.url} target="_blank" rel="noreferrer noopener">
-                {project.data.name}
-              </a>
-            </h2>
-            <p style="margin-top:0.6rem;">{project.data.summary}</p>
-            {project.data.details.map((detail) => (
-              <p style="margin-top:0.6rem;">{detail}</p>
-            ))}
-          </NeonCard>
-        ))
-      }
+    <div class="container project-list">
+      {projects.map((project, index) => (
+        <article class="project-row">
+          <div class="project-number">0{index + 1} / VENTURE</div>
+          <div class="project-main">
+            <p class="eyebrow">Built &amp; operated by Harder Labs</p>
+            <h2>{project.data.name}</h2>
+            <p>{project.data.summary}</p>
+            <p>{project.data.details[0]}</p>
+            <a href={project.data.url} target="_blank" rel="noreferrer noopener">
+              Visit project <span aria-hidden="true">↗</span>
+            </a>
+          </div>
+          <div class="project-visual">
+            {visuals[project.id] ? (
+              <img
+                src={visuals[project.id]}
+                alt={`${project.data.name} artwork`}
+                loading="lazy"
+                width="300"
+                height="300"
+              />
+            ) : (
+              <div class="project-monogram" aria-hidden="true">
+                SP<span>community / exchange</span>
+              </div>
+            )}
+          </div>
+        </article>
+      ))}
     </div>
   </section>
 </BaseLayout>
-
 <style>
-  .project-title-link {
-    color: var(--text-main);
-    text-decoration: none;
-    border-bottom: 1px dashed rgba(120, 198, 255, 0.45);
+  .project-list {
+    border-top: 1px solid var(--border);
   }
-
-  .project-title-link:hover {
+  .project-row {
+    display: grid;
+    grid-template-columns: 1fr 2.2fr 1.1fr;
+    gap: clamp(1rem, 3vw, 3rem);
+    align-items: start;
+    padding: clamp(2rem, 4vw, 4rem) 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .project-number {
     color: var(--accent-primary);
-    border-bottom-color: var(--accent-primary);
+    font:
+      500 0.7rem var(--font-ibm-plex-mono),
+      monospace;
+    letter-spacing: 0.1em;
+  }
+  .project-main h2 {
+    margin: 1rem 0 1.3rem;
+    font-size: clamp(2rem, 3vw, 3.5rem);
+  }
+  .project-main p {
+    max-width: 55ch;
+    margin-top: 0.75rem;
+  }
+  .project-main a {
+    display: inline-flex;
+    gap: 3rem;
+    align-items: center;
+    border-bottom: 1px solid var(--accent-primary);
+    padding-bottom: 0.6rem;
+    margin-top: 1.8rem;
+    color: var(--accent-primary);
+    font-size: 0.9rem;
+  }
+  .project-main a:hover {
+    color: var(--text-main);
+    border-color: var(--text-main);
+  }
+  .project-visual {
+    aspect-ratio: 1;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    background: var(--bg-2);
+  }
+  .project-visual img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: saturate(0.7);
+    transition:
+      filter 0.3s,
+      transform 0.3s;
+  }
+  .project-row:hover img {
+    filter: saturate(1);
+    transform: scale(1.04);
+  }
+  .project-monogram {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    color: var(--accent-primary);
+    font:
+      600 clamp(4rem, 8vw, 8rem) var(--font-sora),
+      sans-serif;
+    letter-spacing: -0.15em;
+    background: radial-gradient(circle at center, #36503d, #1b2921);
+  }
+  .project-monogram span {
+    font:
+      500 0.55rem var(--font-ibm-plex-mono),
+      monospace;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  @media (max-width: 800px) {
+    .project-row {
+      grid-template-columns: 1fr 130px;
+    }
+    .project-number {
+      grid-column: 1/-1;
+    }
+    .project-main {
+      grid-column: 1;
+    }
+    .project-visual {
+      grid-column: 2;
+      grid-row: 2;
+    }
+  }
+  @media (max-width: 520px) {
+    .project-row {
+      display: flex;
+      flex-direction: column;
+    }
+    .project-visual {
+      width: 100%;
+      max-height: 220px;
+    }
+    .project-visual img {
+      height: 220px;
+    }
   }
 </style>

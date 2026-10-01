@@ -1,53 +1,39 @@
 ---
-type Props = {
-  value: string;
-  href?: string;
-  tone?: "neutral" | "primary" | "warning";
-};
-
+type Props = { value: string; href?: string; tone?: "neutral" | "primary" | "warning" };
 const { value, href, tone = "neutral" } = Astro.props as Props;
 ---
 
-{
-  href ? (
-    <a href={href} class={`chip ${tone}`}>
-      {value}
-    </a>
-  ) : (
-    <span class={`chip ${tone}`}>{value}</span>
-  )
-}
-
+{href ? (
+  <a href={href} class={`chip ${tone}`}>
+    {value}
+  </a>
+) : (
+  <span class={`chip ${tone}`}>{value}</span>
+)}
 <style>
   .chip {
-    border-radius: var(--radius-chip);
     display: inline-flex;
     align-items: center;
-    justify-content: center;
-    line-height: 1;
     border: 1px solid var(--border);
-    padding: 0.36rem 0.68rem;
-    font-size: 0.78rem;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
+    padding: 0.28rem 0.55rem;
     color: var(--text-soft);
-    background: rgba(10, 17, 42, 0.76);
+    font:
+      500 0.68rem var(--font-ibm-plex-mono),
+      monospace;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
   }
-
   .chip.primary {
-    color: #05151f;
-    border-color: transparent;
-    background: linear-gradient(130deg, var(--accent-primary), #7ce8ff);
+    color: var(--bg-0);
+    background: var(--accent-primary);
+    border-color: var(--accent-primary);
   }
-
   .chip.warning {
-    border-color: rgba(247, 203, 98, 0.64);
-    color: #ffe8b4;
-    background: rgba(44, 35, 11, 0.66);
+    color: var(--accent-tertiary);
+    border-color: var(--accent-tertiary);
   }
-
   a.chip:hover {
-    border-color: rgba(76, 242, 200, 0.8);
     color: var(--accent-primary);
+    border-color: var(--accent-primary);
   }
 </style>

@@ -5,60 +5,57 @@ type Props = {
   variant?: "primary" | "ghost";
   className?: string;
 };
-
 const { href, target = "_self", variant = "primary", className = "" } = Astro.props as Props;
 const rel = target === "_blank" ? "noreferrer noopener" : undefined;
 ---
 
-{
-  href ? (
-    <a href={href} target={target} rel={rel} class={`glow-btn ${variant} ${className}`.trim()}>
-      <slot />
-    </a>
-  ) : (
-    <button type="button" class={`glow-btn ${variant} ${className}`.trim()}>
-      <slot />
-    </button>
-  )
-}
-
+{href ? (
+  <a href={href} target={target} rel={rel} class={`glow-btn ${variant} ${className}`.trim()}>
+    <slot />
+    <span aria-hidden="true">↗</span>
+  </a>
+) : (
+  <button type="button" class={`glow-btn ${variant} ${className}`.trim()}>
+    <slot />
+    <span aria-hidden="true">↗</span>
+  </button>
+)}
 <style>
   .glow-btn {
     display: inline-flex;
     align-items: center;
-    justify-content: center;
-    gap: 0.4rem;
-    border-radius: 999px;
-    border: 1px solid transparent;
-    font-weight: 600;
-    letter-spacing: 0.01em;
-    padding: 0.62rem 1.05rem;
+    justify-content: space-between;
+    gap: 2rem;
+    min-height: 48px;
+    padding: 0.72rem 1.05rem;
+    border: 1px solid var(--accent-primary);
+    border-radius: 2px;
+    font:
+      600 0.85rem var(--font-dm-sans),
+      sans-serif;
     transition:
-      transform 180ms ease,
-      box-shadow 180ms ease,
-      border-color 180ms ease,
-      color 180ms ease,
-      background-color 180ms ease;
+      background 0.18s,
+      color 0.18s,
+      transform 0.18s;
   }
-
   .glow-btn.primary {
-    color: #02111f;
-    background: linear-gradient(140deg, var(--accent-primary), var(--accent-secondary));
-    box-shadow: var(--shadow-glow);
+    color: var(--bg-0);
+    background: var(--accent-primary);
   }
-
   .glow-btn.ghost {
-    color: var(--text-main);
-    border-color: var(--border);
-    background: rgba(8, 13, 34, 0.6);
+    color: var(--accent-primary);
+    background: transparent;
   }
-
   .glow-btn:hover {
-    transform: translateY(-1px);
-    border-color: rgba(76, 242, 200, 0.75);
+    transform: translateY(-2px);
   }
-
   .glow-btn.primary:hover {
-    color: #000c17;
+    background: var(--text-main);
+    border-color: var(--text-main);
+    color: var(--bg-0);
+  }
+  .glow-btn.ghost:hover {
+    background: var(--accent-primary);
+    color: var(--bg-0);
   }
 </style>

@@ -40,6 +40,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <link rel="canonical" href={canonical} />
 
     <meta property="og:title" content={title} />
+    <meta property="og:site_name" content="Harder Labs" />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
     <meta property="og:url" content={canonical} />
@@ -52,8 +53,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <meta name="twitter:site" content="@kevinharder" />
 
     <title>{title}</title>
-    <Font cssVariable="--font-space-grotesk" preload />
-    <Font cssVariable="--font-chakra-petch" preload />
+    <Font cssVariable="--font-dm-sans" preload />
+    <Font cssVariable="--font-sora" preload />
     <Font cssVariable="--font-ibm-plex-mono" preload />
     <!-- Google Tag Manager -->
     <script is:inline set:html={gtmScript}></script>
@@ -67,9 +68,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <ClientRouter />
   </head>
   <body>
-    <noscript><iframe src={`https://www.googletagmanager.com/ns.html?id=${gtmId}`}
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <a href="#content" class="skip-link">Skip to content</a>
+    <noscript>
+      <iframe
+        src={`https://www.googletagmanager.com/ns.html?id=${gtmId}`}
+        height="0"
+        width="0"
+        style="display:none;visibility:hidden"
+      ></iframe>
+    </noscript>
+    <a href="#content" class="skip-link">
+      Skip to content
+    </a>
     <SiteHeader />
     <main id="content">
       <slot />

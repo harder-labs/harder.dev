@@ -8,13 +8,14 @@ The site is intentionally static-first. Most pages ship as plain Astro output, w
 
 ## Current stack
 
-- Astro 6
+- Astro 7
 - TypeScript
 - Preact islands via `@astrojs/preact`
 - Astro sitemap integration
 - Astro Fonts API for self-hosted Google fonts
 - Astro content collections for typed site data
 - Cloudflare Worker for feed aggregation and AI summarization
+- Prettier with the Astro plugin for consistent formatting
 
 ## Architecture
 
@@ -30,7 +31,7 @@ Key files:
 - `src/components/SiteHeader.astro`
 - `src/components/SiteFooter.astro`
 
-Notable Astro 6 architecture choices:
+Notable Astro architecture choices:
 
 - `ClientRouter` is enabled in the base layout for Astro transitions
 - fonts are configured in `astro.config.mjs` and loaded with `<Font />`
@@ -87,7 +88,7 @@ Caching layers:
 
 ## Local development
 
-Node 22+ is required.
+Node 22.12+ is required.
 
 Install and run the site:
 
@@ -139,7 +140,7 @@ There are two deployment workflows:
 
 Pipeline:
 
-1. Set up Node 22
+1. Set up Node 24
 2. `npm ci`
 3. `npm run build`
 4. Upload `dist/` to Azure Static Web Apps
@@ -153,8 +154,9 @@ Required repo configuration:
 
 Pipeline:
 
-1. Set up Node 22
-2. `npm run worker:deploy`
+1. Set up Node 24
+2. `npm ci`
+3. `npm run worker:deploy`
 
 Required repo configuration:
 
