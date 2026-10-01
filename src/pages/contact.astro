@@ -1,108 +1,163 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
-import NeonCard from "@/components/NeonCard.astro";
-import GlowButton from "@/components/GlowButton.astro";
 ---
 
-<BaseLayout title="Contact | Harder Labs" description="Get in touch with Harder Labs.">
+<BaseLayout
+  title="Contact Harder Labs | Austin, Texas"
+  description="Contact Harder Labs in Austin, Texas for partnerships, technical inquiries, or brand support."
+>
   <section class="page-hero">
     <div class="container">
-      <p class="muted">/contact</p>
-      <h1 class="hero-title">Start a Conversation</h1>
+      <p class="muted">04 / Contact</p>
+      <h1 class="hero-title">Let's start a conversation.</h1>
       <p class="hero-subtitle">
-        Let's build something together. Open a channel with us.
+        Have a question, a partnership idea, or a note for one of our brands? Find the right inbox
+        below.
       </p>
-      <p style="margin-top:0.65rem; color: var(--text-soft);">
-        Whether you are interested in working with us, have a question about an order from one of our brands,
-        or a technical inquiry for the lab, we're listening.
+    </div>
+  </section>
+  <section class="section">
+    <div class="container">
+      <p class="eyebrow">General inquiries</p>
+      <a class="primary-email" href="mailto:kevin@harder.dev">
+        kevin@harder.dev <span aria-hidden="true">↗</span>
+      </a>
+      <p class="contact-note">
+        For partnerships, press, technical questions, and official notices.
       </p>
-      <div class="hero-actions" style="margin-top:1rem;">
-        <GlowButton href="#brands">Say Hello</GlowButton>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <div>
+          <p class="eyebrow">Brand support</p>
+          <h2 class="section-title">Talk to the right team.</h2>
+        </div>
+      </div>
+      <div class="contact-grid">
+        <a href="mailto:info@sharepuzzles.com">
+          <span>01 / Community</span>
+          <strong>SharePuzzles</strong>
+          <span>info@sharepuzzles.com ↗</span>
+        </a>
+        <a href="mailto:info@hillcountrygear.com">
+          <span>02 / Outdoors</span>
+          <strong>Hill Country Gear</strong>
+          <span>info@hillcountrygear.com ↗</span>
+        </a>
+        <a href="mailto:info@stellararcade.com">
+          <span>03 / Collectibles</span>
+          <strong>Stellar Arcade</strong>
+          <span>info@stellararcade.com ↗</span>
+        </a>
       </div>
     </div>
   </section>
-
-  <section id="brands" class="section">
-    <div class="container grid grid-2">
-
-      <NeonCard>
-        <h2 style="font-size:1.35rem;">SharePuzzles</h2>
-        <p style="margin-top:0.55rem; color: var(--text-soft);">Questions</p>
-        <div class="hero-actions" style="margin-top:0.9rem;">
-          <GlowButton href="mailto:info@sharepuzzles.com">info@sharepuzzles.com</GlowButton>
-        </div>
-      </NeonCard>
-
-      <NeonCard>
-        <h2 style="font-size:1.35rem;">Hill Country Gear</h2>
-        <p style="margin-top:0.55rem; color: var(--text-soft);">Questions</p>
-        <div class="hero-actions" style="margin-top:0.9rem;">
-          <GlowButton href="mailto:info@hillcountrygear.com">info@hillcountrygear.com</GlowButton>
-        </div>
-      </NeonCard>
-
-      <NeonCard>
-        <h2 style="font-size:1.35rem;">Stellar Arcade</h2>
-        <p style="margin-top:0.55rem; color: var(--text-soft);">Questions</p>
-        <div class="hero-actions" style="margin-top:0.9rem;">
-          <GlowButton href="mailto:info@stellararcade.com">info@stellararcade.com</GlowButton>
-        </div>
-      </NeonCard>
-
-      <NeonCard>
-        <h2 style="font-size:1.35rem;">General Lab Inquiries</h2>
-        <p style="margin-top:0.55rem; color: var(--text-soft);">Partnerships &amp; Experiments</p>
-        <div class="hero-actions" style="margin-top:0.9rem;">
-          <GlowButton href="mailto:kevin@harder.dev">kevin@harder.dev</GlowButton>
-        </div>
-      </NeonCard>
-
-      <NeonCard>
-        <h2 style="font-size:1.35rem;">Legal &amp; Privacy</h2>
-        <p style="margin-top:0.55rem; color: var(--text-soft);">Official Notices</p>
-        <div class="hero-actions" style="margin-top:0.9rem;">
-          <GlowButton href="mailto:kevin@harder.dev">kevin@harder.dev</GlowButton>
-        </div>
-      </NeonCard>
-    </div>
-  </section>
-
   <section class="section">
-    <div class="container grid grid-2">
-      <NeonCard>
-        <h2 style="font-size:1.35rem;">The Lab is Always Running</h2>
-        <p style="margin-top:0.55rem;">
-          We are a small, focused team. We typically respond to all inquiries within 24 business hours.
+    <div class="container social-row">
+      <div>
+        <p class="eyebrow">Find us elsewhere</p>
+        <p>
+          Austin based, digital first. Please contact us by email before sending physical returns.
         </p>
-      </NeonCard>
-
-      <NeonCard>
-        <h2 style="font-size:1.35rem;">Social Nodes</h2>
-        <p style="margin-top:0.55rem;">Where we broadcast to.</p>
-        <div class="hero-actions" style="margin-top:0.9rem;">
-          <GlowButton href="https://www.linkedin.com/in/KevinHarder" target="_blank" variant="ghost">
-            LinkedIn / @KevinHarder
-          </GlowButton>
-          <GlowButton href="https://github.com/harder" target="_blank" variant="ghost">
-            GitHub / @harder
-          </GlowButton>
-          <GlowButton href="https://x.com/kevinharder" target="_blank" variant="ghost">
-            X / @kevinharder
-          </GlowButton>
-        </div>
-      </NeonCard>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="container">
-      <NeonCard>
-        <h2 style="font-size:1.15rem;">Harder Labs HQ &mdash; Austin, Texas</h2>
-        <p style="margin-top:0.55rem; color: var(--text-soft);">
-          We are a digital-first studio. While we love our Austin community, we do not accept walk-ins
-          or physical returns at our registered office. Please contact us via email for return instructions.
-        </p>
-      </NeonCard>
+      </div>
+      <div>
+        <a href="https://www.linkedin.com/in/KevinHarder" target="_blank" rel="noreferrer noopener">
+          LinkedIn ↗
+        </a>
+        <a href="https://github.com/harder" target="_blank" rel="noreferrer noopener">
+          GitHub ↗
+        </a>
+        <a href="https://x.com/kevinharder" target="_blank" rel="noreferrer noopener">
+          X ↗
+        </a>
+      </div>
     </div>
   </section>
 </BaseLayout>
+<style>
+  .primary-email {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    border-bottom: 1px solid var(--accent-primary);
+    padding: 1rem 0;
+    max-width: 950px;
+    color: var(--accent-primary);
+    font:
+      500 clamp(1.9rem, 5vw, 5rem)/1.2 var(--font-sora),
+      sans-serif;
+    letter-spacing: -0.055em;
+    overflow-wrap: anywhere;
+  }
+  .primary-email:hover {
+    color: var(--text-main);
+  }
+  .contact-note {
+    margin-top: 1rem;
+  }
+  .contact-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    border: 1px solid var(--border);
+    background: var(--border);
+  }
+  .contact-grid a {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 225px;
+    padding: 1.5rem;
+    background: var(--surface-0);
+  }
+  .contact-grid a:hover {
+    background: var(--surface-1);
+  }
+  .contact-grid span {
+    color: var(--accent-primary);
+    font:
+      0.7rem var(--font-ibm-plex-mono),
+      monospace;
+  }
+  .contact-grid strong {
+    font:
+      500 1.5rem var(--font-sora),
+      sans-serif;
+    letter-spacing: -0.04em;
+  }
+  .social-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+  }
+  .social-row p:not(.eyebrow) {
+    max-width: 55ch;
+    margin-top: 1rem;
+  }
+  .social-row > div:last-child {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    align-items: start;
+  }
+  .social-row a {
+    border-bottom: 1px solid var(--accent-primary);
+    color: var(--accent-primary);
+  }
+  @media (max-width: 800px) {
+    .contact-grid {
+      grid-template-columns: 1fr;
+    }
+    .contact-grid a {
+      min-height: 160px;
+    }
+    .social-row {
+      display: block;
+    }
+    .social-row > div:last-child {
+      margin-top: 2rem;
+    }
+  }
+</style>

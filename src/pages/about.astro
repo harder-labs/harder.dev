@@ -1,142 +1,161 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
-import NeonCard from "@/components/NeonCard.astro";
-import TerminalPanel from "@/components/TerminalPanel.astro";
-import { Image } from "astro:assets";
-import logoMark from "@/assets/brand/logo_128.png";
+import GlowButton from "@/components/GlowButton.astro";
 ---
 
-<BaseLayout title="About | Harder Labs" description="About Harder Labs — an Austin, Texas company building niche e-commerce brands, software experiments, and open tools.">
+<BaseLayout
+  title="About Harder Labs | Austin Venture Lab"
+  description="Meet Harder Labs, an Austin venture lab founded by Kevin Harder to build e-commerce brands, communities, and software products."
+>
   <section class="page-hero">
     <div class="container">
-      <p class="muted">/about</p>
-      <h1 class="hero-title">About Harder Labs</h1>
-      <div class="hero-subtitle-row">
-        <p class="hero-subtitle hero-subtitle-copy">
-          Harder Labs is an engineering-led product studio and venture laboratory based in Austin, Texas.
-          We build and operate online communities, diverse e-commerce brands, and software experiments.
-          We keep notes on what we build, what can be improved, and the lessons learned along the way.
-        </p>
-        <Image
-          class="hero-logo"
-          src={logoMark}
-          alt="Harder Labs logo"
-          width="128"
-          height="128"
-        />
-      </div>
-    </div>
-  </section>
-  <section class="section">
-    <div class="container split">
-      <NeonCard>
-        <h2 style="font-size:1.5rem;">The Company</h2>
-        <p style="margin-top:0.65rem;">
-          Harder Labs LLC is a Texas limited liability company founded by Kevin Harder and based in Austin, Texas.
-          It serves as the parent entity for a growing portfolio of e-commerce businesses, community platforms,
-          and software projects under a single, unified operational framework. Each venture operates under its own brand with official DBA filings, real customers, and real payment processing.
-        </p>
-        <p style="margin-top:0.65rem;">
-          <strong>Why 'Labs'?</strong><br />
-          We believe the best businesses start as curious questions. Harder Labs provides the legal, financial, and technical infrastructure to turn those questions into sustainable brands. Every project under our umbrella shares a commitment to quality, engineering excellence, and the Austin maker spirit.
-        </p>
-        <p style="margin-top:0.65rem;">
-          What started as a series of experiments has evolved into a registered laboratory for launching and scaling high-quality digital and physical brands. We build things with clear architecture, focus on helping real people, and a bias toward shipping fast. The common thread across everything we do: use modern technology (especially AI and agentic tooling)
-          to build small, focused businesses that deliver genuine value.
-        </p>
-      </NeonCard>
-
-      <TerminalPanel title="what_we_do">
-        <ul>
-          <li>Build and operate unique e-commerce brands</li>
-          <li>Ship community platforms that bring people together</li>
-          <li>Run practical experiments with AI and agentic systems</li>
-          <li>Contribute to and help with open source projects</li>
-          <li>Share what we learn publicly and honestly</li>
-        </ul>
-      </TerminalPanel>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="container split">
-      <NeonCard>
-        <h2 style="font-size:1.5rem;">The Founder</h2>
-        <p style="margin-top:0.65rem;">
-          I'm Kevin Harder, a software engineer with 25+ years of experience across startups, enterprise companies,
-          and everything in between. I've worn hats ranging from developer to architect to engineering leader.
-        </p>
-        <p style="margin-top:0.65rem;">
-          I started Harder Labs to formalize the work I was already doing — building small businesses
-          and running experiments at the intersection of community, e-commerce, and AI. Turning ideas
-          into actual products that people use and enjoy is what gets me out of bed.
-        </p>
-        <p style="margin-top:0.65rem;">
-          For the longer personal and career story, see <a class="inline-link" href="https://kevinharder.com" target="_blank" rel="noreferrer noopener">KevinHarder.com</a>.
-        </p>
-      </NeonCard>
-
-      <TerminalPanel title="focus_areas">
-        <ul>
-          <li>Build things with clear architecture (and defaults that aren't insane)</li>
-          <li>Track AI and agentic releases that can help real businesses</li>
-          <li>Execute practical experiments and share the outcomes</li>
-          <li>Operate interesting e-commerce brands that serve real customers</li>
-        </ul>
-      </TerminalPanel>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="container">
-      <h2 class="section-title">The Harder.dev web site</h2>
-      <p class="section-subtitle" style="margin-top:0.8rem;">
-        This site is static-first by design, with dynamic behavior only where it provides value.
-        Because the best way to ensure a page works is to not make the server do anything when someone visits.
+      <p class="muted">02 / About the lab</p>
+      <h1 class="hero-title">
+        Small team.
+        <br />
+        Wide curiosity.
+      </h1>
+      <p class="hero-subtitle">
+        Harder Labs is an engineering-led venture lab based in Austin, Texas. We build and operate
+        e-commerce brands, online communities, and software products.
       </p>
-      <div class="grid grid-3" style="margin-top:1.2rem;">
-        <NeonCard>
-          <h3 style="font-size:1.1rem;">Static Stability</h3>
-          <p style="margin-top:0.55rem;">
-            Built with <a class="inline-link" href="https://astro.build" target="_blank" rel="noreferrer noopener">Astro</a> and
-            <a class="inline-link" href="https://www.typescriptlang.org/" target="_blank" rel="noreferrer noopener">TypeScript</a>
-            for static generation, clean routing, and minimal JavaScript by default.
-            It's fast, predictable, and doesn't load megabytes of JavaScript just to show you a sentence.
-          </p>
-        </NeonCard>
-        <NeonCard>
-          <h3 style="font-size:1.1rem;">Occasional Hydration</h3>
-          <p style="margin-top:0.55rem;">
-            We use <a class="inline-link" href="https://docs.astro.build/en/concepts/islands/" target="_blank" rel="noreferrer noopener">Astro dynamic islands</a>
-            for things that actually need to move. <a class="inline-link" href="https://preactjs.com" target="_blank" rel="noreferrer noopener">Preact</a>
-            hydrates the signal widget only when you're looking at it. The rest stays peacefully still.
-          </p>
-        </NeonCard>
-        <NeonCard>
-          <h3 style="font-size:1.1rem;">Typed Content Layer</h3>
-          <p style="margin-top:0.55rem;">
-            Structured site data now lives in Astro collections with schema validation instead of hand-maintained arrays in page files.
-            It keeps content centralized, type-safe, and easier to extend as the site grows.
-          </p>
-        </NeonCard>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container about-intro">
+      <p class="eyebrow">A note from the lab</p>
+      <div>
+        <h2 class="section-title">Ideas are the beginning. The work is what matters.</h2>
+        <p>
+          We believe the best businesses start with a curious question. Harder Labs gives those
+          questions a place to become working products. Our ventures have distinct identities, but
+          share practical engineering, thoughtful operations, and a commitment to making something
+          useful for real people.
+        </p>
+        <p>
+          We experiment, learn from customers, and improve what we ship. That applies equally to a
+          community platform, a commerce brand, or a new way to use AI.
+        </p>
       </div>
-      <div class="grid grid-2" style="margin-top:1rem;">
-        <NeonCard>
-          <h3 style="font-size:1.1rem;">Data & Safety Controls</h3>
-          <p style="margin-top:0.55rem;">
-            Feed allowlists, CORS-aware proxying, retry/backoff, relevance filtering, and layered caching
-            (`localStorage`, edge cache, conditional `ETag` / `Last-Modified`) keep the data fresh and predictable.
-          </p>
-        </NeonCard>
-        <NeonCard>
-          <h3 style="font-size:1.1rem;">Delivery Workflow</h3>
-          <p style="margin-top:0.55rem;">
-            The Astro site deploys as static assets, while the worker deploys independently via
-            <a class="inline-link" href="https://github.com/features/actions" target="_blank" rel="noreferrer noopener">GitHub Actions</a>.
-            It keeps updates fast and avoids coupling content deploys to edge API deploys.
-          </p>
-        </NeonCard>
+    </div>
+  </section>
+  <section class="section pillars">
+    <div class="container">
+      <p class="eyebrow">The work spans three fields</p>
+      <div class="pillar-grid">
+        <article>
+          <span>01</span>
+          <h3>Commerce</h3>
+          <p>Independent brands with real products, real customers, and a reason to exist.</p>
+        </article>
+        <article>
+          <span>02</span>
+          <h3>Community</h3>
+          <p>Tools and gathering places that help people share what they love.</p>
+        </article>
+        <article>
+          <span>03</span>
+          <h3>Technology</h3>
+          <p>Software and AI experiments grounded in everyday usefulness.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container founder-grid">
+      <div>
+        <p class="eyebrow">The founder</p>
+        <h2 class="section-title">Meet Kevin Harder.</h2>
+      </div>
+      <div>
+        <p>
+          Kevin is a software engineer with more than 25 years of experience across startups and
+          enterprise teams, from development to architecture and engineering leadership. He founded
+          Harder Labs to bring his independent ventures together under one roof and keep building at
+          the intersection of technology, commerce, and community.
+        </p>
+        <p>
+          For his career story and personal work, visit{" "}
+          <a
+            class="inline-link"
+            href="https://kevinharder.com"
+            target="_blank"
+            rel="noreferrer noopener"
+          >
+            KevinHarder.com
+          </a>
+          .
+        </p>
+        <div class="hero-actions">
+          <GlowButton href="/contact">Get in touch</GlowButton>
+          <GlowButton href="/projects" variant="ghost">
+            Explore projects
+          </GlowButton>
+        </div>
       </div>
     </div>
   </section>
 </BaseLayout>
+<style>
+  .about-intro,
+  .founder-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 3rem;
+  }
+  .about-intro .section-title {
+    max-width: 17ch;
+  }
+  .about-intro p:not(.eyebrow),
+  .founder-grid p:not(.eyebrow) {
+    max-width: 65ch;
+    margin-top: 1.5rem;
+    font-size: 1.1rem;
+  }
+  .pillars {
+    background: var(--paper);
+  }
+  .pillars .eyebrow {
+    color: #5d6b56;
+  }
+  .pillar-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem;
+    margin-top: 3rem;
+  }
+  .pillar-grid article {
+    border-top: 1px solid #9fac97;
+    padding-top: 1rem;
+  }
+  .pillar-grid span {
+    color: #5e773e;
+    font:
+      500 0.7rem var(--font-ibm-plex-mono),
+      monospace;
+  }
+  .pillar-grid h3 {
+    margin: 3rem 0 1rem;
+    color: #17231b;
+    font:
+      500 1.6rem var(--font-sora),
+      sans-serif;
+    letter-spacing: -0.04em;
+  }
+  .pillar-grid p {
+    color: #4b594d;
+  }
+  .founder-grid .section-title {
+    margin-top: 1.2rem;
+  }
+  @media (max-width: 800px) {
+    .about-intro,
+    .founder-grid,
+    .pillar-grid {
+      grid-template-columns: 1fr;
+    }
+    .pillar-grid h3 {
+      margin: 1.2rem 0 0.6rem;
+    }
+  }
+</style>

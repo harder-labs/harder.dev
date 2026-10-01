@@ -8,8 +8,8 @@ export default defineConfig({
   integrations: [preact(), sitemap()],
   fonts: [
     {
-      name: "Space Grotesk",
-      cssVariable: "--font-space-grotesk",
+      name: "DM Sans",
+      cssVariable: "--font-dm-sans",
       provider: fontProviders.google(),
       weights: [400, 500, 600, 700],
       styles: ["normal"],
@@ -17,8 +17,8 @@ export default defineConfig({
       fallbacks: ["sans-serif"]
     },
     {
-      name: "Chakra Petch",
-      cssVariable: "--font-chakra-petch",
+      name: "Sora",
+      cssVariable: "--font-sora",
       provider: fontProviders.google(),
       weights: [500, 600, 700],
       styles: ["normal"],

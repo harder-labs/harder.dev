@@ -1,67 +1,148 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
-import NeonCard from "@/components/NeonCard.astro";
 import GlowButton from "@/components/GlowButton.astro";
-import TerminalPanel from "@/components/TerminalPanel.astro";
 import LiveSignalsWidget from "@/components/islands/LiveSignalsWidget";
-
+import { getCollection } from "astro:content";
 const workerBaseUrl = import.meta.env.PUBLIC_AI_WORKER_URL || "";
+const projects = (await getCollection("projects")).sort((a, b) => a.data.order - b.data.order);
 ---
 
 <BaseLayout>
-  <section class="section">
-    <div class="container split">
-      <div>
-        <p class="muted">harder.dev · Harder Labs · Austin, TX</p>
-        <h1 class="hero-title">We build awesome things from curious questions.</h1>
+  <section class="home-hero">
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <p class="eyebrow">
+          <span class="status-dot"></span> Independent venture lab / Austin, Texas
+        </p>
+        <h1 class="hero-title">
+          A laboratory
+          <br />
+          for <span>what's next.</span>
+        </h1>
         <p class="hero-subtitle">
-          Harder Labs is an engineering-led product studio and venture laboratory.
-          We build and operate online communities, diverse e-commerce brands, and software experiments.
-          25+ years of engineering experience, a bias toward shipping fast, and a genuine
-          curiosity about discovering and using the technologies of tomorrow.
+          Harder Labs is an Austin product studio building and operating e-commerce brands,
+          community platforms, and software. We turn curious ideas into useful products.
         </p>
         <div class="hero-actions">
-          <GlowButton href="/projects">View Projects</GlowButton>
-          <GlowButton href="/signals" variant="ghost">Sub-Space Signals</GlowButton>
+          <GlowButton href="/projects">Explore our work</GlowButton>
+          <GlowButton href="/about" variant="ghost">
+            Meet the lab
+          </GlowButton>
         </div>
       </div>
-
-      <TerminalPanel title="current_state">
-        <p>
-          <strong style="color: var(--accent-primary)">AI Agents:</strong> Working with OpenAI Codex, GitHub CoPilot CLI, Claude Code, Gemini &amp; Antigravity, OpenClaw, and more!
-        </p>
-        <p>
-          <strong style="color: var(--accent-secondary)">E-Commerce:</strong> Operating unique brands with real customers and real payment processing.
-        </p>
-        <p>
-          <strong style="color: var(--accent-tertiary)">Community:</strong> Building platforms that bring people together, like puzzle exchanges and sharing networks.
-        </p>
-        <p>
-          <strong style="color: var(--accent-primary)">Open Source:</strong> Sharing and contributing to open source tools.
-        </p>
-        <p>
-          <strong style="color: var(--accent-secondary)">Mostly Harmless:</strong> We try not to break the internet.
-        </p>
-      </TerminalPanel>
+      <div
+        class="hero-art"
+        aria-label="Harder Labs graphic showing connected ideas becoming real products"
+        role="img"
+      >
+        <div class="art-grid"></div>
+        <div class="art-orbit art-orbit-one"></div>
+        <div class="art-orbit art-orbit-two"></div>
+        <span class="art-readout" aria-hidden="true">
+          HL–01 <i></i> SYSTEM ACTIVE
+        </span>
+        <span class="art-reticle art-reticle-left" aria-hidden="true">
+          +
+        </span>
+        <span class="art-reticle art-reticle-right" aria-hidden="true">
+          +
+        </span>
+        <div class="art-core">
+          H
+          <span>
+            HARDER
+            <br />
+            LABS
+          </span>
+        </div>
+        <span class="art-label art-label-one">01 / EXPLORE</span>
+        <span class="art-label art-label-two">02 / BUILD</span>
+        <span class="art-label art-label-three">03 / OPERATE</span>
+        <span class="art-coordinate">
+          30°16' N<br />
+          97°44' W
+        </span>
+      </div>
+    </div>
+    <div class="container hero-meta">
+      <span>BASED IN AUSTIN, TX</span>
+      <span>ENGINEERING × COMMERCE × COMMUNITY</span>
+      <span>SCROLL TO EXPLORE ↓</span>
     </div>
   </section>
 
-  <section class="section">
-    <div class="container grid grid-3">
-      <NeonCard>
-        <h2 style="font-size:1.2rem;">Build in Public</h2>
-        <p style="margin-top:0.6rem;">We share the wins, the misses, and the occasional "what were we thinking?" moments.</p>
-      </NeonCard>
-      <NeonCard>
-        <h2 style="font-size:1.2rem;">Purposeful Chaos</h2>
-        <p style="margin-top:0.6rem;">Small experiments with clear exits beat giant "strategic initiatives" every time.</p>
-      </NeonCard>
-      <NeonCard>
-        <h2 style="font-size:1.2rem;">Human-First</h2>
-        <p style="margin-top:0.6rem;">
-          Architecture should be understandable by a human who hasn't had their first cup of coffee yet.
+  <section class="section intro-section">
+    <div class="container intro-grid">
+      <p class="eyebrow">01 / The approach</p>
+      <div>
+        <h2 class="section-title">
+          Built with intent.
+          <br />
+          <span>Run in the real world.</span>
+        </h2>
+        <p class="section-subtitle">
+          We are an engineering-led venture lab. Our work spans online stores, community platforms,
+          and software experiments. The method stays grounded: understand the need, build
+          thoughtfully, launch, and keep improving.
         </p>
-      </NeonCard>
+      </div>
+    </div>
+  </section>
+
+  <section class="section work-section">
+    <div class="container">
+      <div class="section-header">
+        <div>
+          <p class="eyebrow">02 / Selected work</p>
+          <h2 class="section-title">Ideas out in the wild.</h2>
+        </div>
+        <GlowButton href="/projects" variant="ghost">
+          All projects
+        </GlowButton>
+      </div>
+      <div class="project-preview-grid">
+        {projects.slice(0, 3).map((project, index) => (
+          <a class="preview-card" href={project.data.url} target="_blank" rel="noreferrer noopener">
+            <span class="preview-index">0{index + 1} / VENTURE</span>
+            <div>
+              <h3>
+                {project.data.name} <span aria-hidden="true">↗</span>
+              </h3>
+              <p>{project.data.summary}</p>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section method-section">
+    <div class="container">
+      <div class="section-header">
+        <div>
+          <p class="eyebrow">03 / What drives us</p>
+          <h2 class="section-title">From questions to working products.</h2>
+        </div>
+      </div>
+      <div class="method-grid">
+        <article>
+          <span>01 —</span>
+          <h3>Find the question</h3>
+          <p>Start with a real need, a surprising idea, or a community worth bringing together.</p>
+        </article>
+        <article>
+          <span>02 —</span>
+          <h3>Make it tangible</h3>
+          <p>
+            Use practical engineering and modern tools to put a working product in people's hands.
+          </p>
+        </article>
+        <article>
+          <span>03 —</span>
+          <h3>Keep it useful</h3>
+          <p>Operate the thing, listen to customers, and let evidence guide the next iteration.</p>
+        </article>
+      </div>
     </div>
   </section>
 
@@ -69,12 +150,381 @@ const workerBaseUrl = import.meta.env.PUBLIC_AI_WORKER_URL || "";
     <div class="container">
       <div class="section-header">
         <div>
-          <h2 class="section-title">The Signal</h2>
-          <p class="section-subtitle">A filtered stream of engineering updates, curated so you don't have to doomscroll.</p>
+          <p class="eyebrow">04 / Signals from the field</p>
+          <h2 class="section-title">What we're watching.</h2>
+          <p class="section-subtitle">
+            A curated feed of engineering and AI releases, distilled into notes you can use.
+          </p>
         </div>
-        <GlowButton href="/signals" variant="ghost">View All Signals</GlowButton>
+        <GlowButton href="/signals" variant="ghost">
+          View all signals
+        </GlowButton>
       </div>
       <LiveSignalsWidget client:visible maxItems={4} workerBaseUrl={workerBaseUrl} />
     </div>
   </section>
 </BaseLayout>
+<style>
+  .home-hero {
+    border-bottom: 1px solid var(--border);
+  }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    min-height: min(720px, 80vh);
+    align-items: center;
+    gap: 3rem;
+    padding-block: 5rem;
+  }
+  .hero-copy {
+    position: relative;
+    z-index: 1;
+  }
+  .hero-copy .eyebrow {
+    color: var(--accent-primary);
+  }
+  .status-dot {
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--accent-primary);
+    margin-right: 0.55rem;
+    box-shadow: 0 0 12px var(--accent-primary);
+  }
+  .hero-title {
+    margin-top: 2.2rem;
+    font-size: clamp(3.4rem, 5.6vw, 7.8rem);
+    white-space: nowrap;
+  }
+  .hero-title span {
+    color: var(--accent-primary);
+  }
+  .hero-art {
+    height: 470px;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    background: radial-gradient(circle at 50% 50%, #2d4232, transparent 52%), #19241e;
+  }
+  .hero-art::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: repeating-linear-gradient(
+      to bottom,
+      transparent 0 3px,
+      rgba(6, 20, 12, 0.18) 3px 4px
+    );
+    opacity: 0.38;
+  }
+  .art-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(212, 245, 118, 0.08) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(212, 245, 118, 0.08) 1px, transparent 1px);
+    background-size: 42px 42px;
+  }
+  .art-grid::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      135deg,
+      transparent 40%,
+      rgba(212, 245, 118, 0.08) 50%,
+      transparent 60%
+    );
+  }
+  .art-orbit {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border: 1px solid rgba(212, 245, 118, 0.32);
+    border-radius: 50%;
+    transform: translate(-50%, -50%) rotate(-25deg);
+  }
+  .art-orbit-one {
+    width: 350px;
+    height: 350px;
+  }
+  .art-orbit-one::before {
+    content: "";
+    position: absolute;
+    top: 34px;
+    left: 35px;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--accent-tertiary);
+    box-shadow: 0 0 16px rgba(228, 173, 114, 0.7);
+  }
+  .art-orbit-two {
+    width: 520px;
+    height: 260px;
+  }
+  .art-core {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 166px;
+    height: 166px;
+    border: 2px solid var(--accent-primary);
+    display: grid;
+    place-items: center;
+    background: #17231b;
+    box-shadow:
+      0 0 0 12px rgba(212, 245, 118, 0.05),
+      0 0 80px rgba(212, 245, 118, 0.15);
+    color: var(--accent-primary);
+    font:
+      600 6.5rem/1 var(--font-sora),
+      sans-serif;
+    letter-spacing: -0.12em;
+  }
+  .art-core span {
+    position: absolute;
+    bottom: 13px;
+    left: 17px;
+    font:
+      600 0.5rem/1.2 var(--font-ibm-plex-mono),
+      monospace;
+    letter-spacing: 0.2em;
+  }
+  .art-label,
+  .art-coordinate {
+    position: absolute;
+    color: var(--accent-primary);
+    font:
+      500 0.63rem/1.5 var(--font-ibm-plex-mono),
+      monospace;
+    letter-spacing: 0.1em;
+  }
+  .art-label-one {
+    top: 17%;
+    left: 10%;
+  }
+  .art-label-two {
+    right: 9%;
+    top: 34%;
+  }
+  .art-label-three {
+    left: 12%;
+    bottom: 18%;
+  }
+  .art-coordinate {
+    right: 5%;
+    bottom: 5%;
+    color: var(--text-muted);
+    text-align: right;
+  }
+  .art-readout,
+  .art-reticle {
+    position: absolute;
+    color: var(--accent-secondary);
+    font:
+      500 0.6rem/1.4 var(--font-ibm-plex-mono),
+      monospace;
+    letter-spacing: 0.12em;
+  }
+  .art-readout {
+    top: 1.3rem;
+    right: 1.4rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+  }
+  .art-readout i {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--accent-tertiary);
+    box-shadow: 0 0 10px var(--accent-tertiary);
+  }
+  .art-reticle {
+    font-size: 1.1rem;
+    font-weight: 400;
+    opacity: 0.75;
+  }
+  .art-reticle-left {
+    left: 7%;
+    top: 39%;
+  }
+  .art-reticle-right {
+    right: 14%;
+    bottom: 21%;
+  }
+  .hero-meta {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-block: 1rem;
+    border-top: 1px solid var(--border);
+    color: var(--text-muted);
+    font:
+      500 0.63rem var(--font-ibm-plex-mono),
+      monospace;
+    letter-spacing: 0.08em;
+  }
+  .intro-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 2rem;
+  }
+  .intro-grid .section-title {
+    max-width: 21ch;
+  }
+  .intro-grid .section-title span {
+    color: var(--accent-primary);
+  }
+  .intro-grid .section-subtitle {
+    max-width: 68ch;
+    font-size: 1.1rem;
+  }
+  .work-section {
+    background: var(--paper);
+  }
+  .work-section .eyebrow {
+    color: #5b684e;
+  }
+  .work-section .section-title {
+    color: #18231b;
+  }
+  .project-preview-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: #aab1a4;
+    border: 1px solid #aab1a4;
+  }
+  .preview-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 285px;
+    padding: 1.7rem;
+    background: var(--paper);
+    color: #18231b;
+    transition: background 0.2s;
+  }
+  .preview-card:hover {
+    background: #dce9bf;
+    color: #18231b;
+  }
+  .preview-index {
+    font:
+      500 0.65rem var(--font-ibm-plex-mono),
+      monospace;
+    letter-spacing: 0.1em;
+    color: #5d6b56;
+  }
+  .preview-card h3 {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    font:
+      500 1.6rem/1.2 var(--font-sora),
+      sans-serif;
+    letter-spacing: -0.05em;
+  }
+  .preview-card h3 span {
+    color: #658428;
+  }
+  .preview-card p {
+    margin-top: 0.85rem;
+    color: #465346;
+    font-size: 0.9rem;
+  }
+  .work-section :global(.glow-btn.ghost) {
+    border-color: #18231b;
+    color: #18231b;
+  }
+  .work-section :global(.glow-btn.ghost:hover) {
+    background: #18231b;
+    color: var(--paper);
+  }
+  .method-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+  .method-grid article {
+    border-top: 1px solid var(--accent-primary);
+    padding-top: 1.2rem;
+  }
+  .method-grid span {
+    color: var(--accent-primary);
+    font:
+      0.7rem var(--font-ibm-plex-mono),
+      monospace;
+  }
+  .method-grid h3 {
+    margin: 3rem 0 1rem;
+    font:
+      500 1.5rem var(--font-sora),
+      sans-serif;
+    letter-spacing: -0.04em;
+  }
+  .method-grid p {
+    max-width: 35ch;
+  }
+  @media (max-width: 950px) {
+    .hero-grid {
+      grid-template-columns: 1fr;
+    }
+    .hero-art {
+      height: 350px;
+    }
+    .hero-title {
+      white-space: normal;
+    }
+    .intro-grid {
+      grid-template-columns: 1fr;
+    }
+    .project-preview-grid {
+      grid-template-columns: 1fr;
+    }
+    .preview-card {
+      min-height: 220px;
+    }
+    .method-grid {
+      grid-template-columns: 1fr;
+    }
+    .method-grid h3 {
+      margin: 1rem 0;
+    }
+    .hero-meta span:nth-child(2) {
+      display: none;
+    }
+  }
+  @media (max-width: 550px) {
+    .hero-grid {
+      padding-block: 4rem 2rem;
+    }
+    .hero-art {
+      height: 300px;
+    }
+    .art-orbit-one {
+      width: 250px;
+      height: 250px;
+    }
+    .art-orbit-two {
+      width: 380px;
+      height: 200px;
+    }
+    .art-core {
+      width: 125px;
+      height: 125px;
+      font-size: 5rem;
+    }
+    .hero-meta {
+      font-size: 0.58rem;
+    }
+    .art-reticle {
+      display: none;
+    }
+  }
+</style>
